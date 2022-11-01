@@ -62,4 +62,10 @@ describe('Testes da função getOpeningHours', () => {
   it('Saturday test', () => {
     expect(getOpeningHours('Saturday', 'C9:00-AM')).toThrow(new Error('The hour should represent a number'));
   });
+  it('12 hours test', () => {
+    expect(getOpeningHours('Saturday', '13:00-AM')).toThrow(new Error('The hour must be between 0 and 12'));
+  });
+  it('minutes test', () => {
+    expect(getOpeningHours('Saturday', '09:60-AM')).toThrow(new Error('The minutes must be between 0 and 59'));
+  });
 });
